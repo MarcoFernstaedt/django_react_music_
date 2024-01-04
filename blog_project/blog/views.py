@@ -18,4 +18,4 @@ class SignUpView(generic.CreateView):
 
 class LoginView():
     pass
-    # create logint
+    # create logint template
