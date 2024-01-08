@@ -20,8 +20,6 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -31,21 +29,44 @@ share/python-wheels/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+media
 
-# PyCharm
-.idea/
+# Flask stuff:
+instance/
+.webassets-cache
 
-# VSCode
-.vscode/
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# virtual environment
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
 venv/
 ENV/
-env/
-.env
+env.bak/
+venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -62,10 +83,22 @@ env/
 .dmypy.json
 dmypy.json
 
-# pytest
-.cache
-.pytest_cache/
+# Pyre type checker
+.pyre/
 
-# Others
-.DS_Store
-Thumbs.db
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# React / Node
+node_modules/
+/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
