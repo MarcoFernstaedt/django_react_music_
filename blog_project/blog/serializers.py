@@ -7,6 +7,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'content', 'author', 'publish_date']
 
 class CommentSerializer(serializers.ModelSerializer):
-    modal = Comment
-    fields = ['id', 'title', 'content', 'author', 'publish_date']
-    
+    class Meta:
+        modal = Comment
+        fields = ['id', 'title', 'content', 'author', 'publish_date']
+        
