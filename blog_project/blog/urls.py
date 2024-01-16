@@ -1,10 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import PostSerializer, CommentSerializer
+from .views import PostViewSet, CommentViewSet
 
 router = DefaultRouter()
-router.register('posts', PostSerializer)
-router.register('comments', CommentSerializer)
+router.register('posts', PostViewSet)
+router.register('comments', CommentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
