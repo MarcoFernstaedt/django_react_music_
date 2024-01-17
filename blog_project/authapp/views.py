@@ -1,4 +1,4 @@
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from .serializers import UserRegistrationSerializer, ProfileSerializer
 from .models import Profile
@@ -16,9 +16,13 @@ class UserRegistrationView(generics.CreateAPIView):
             "message": "User Created Successfully.  Now perform Email Verification process."
         }, status=status.HTTP_201_CREATED)
     
-class ProfileView(generics.RetrieveAPIView):
+class ProfileView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+    def get_object(self):
+        return self.request.user.profile
 
     def get_serializer_context(self):
         return {'request': self.request}
