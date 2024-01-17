@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from .models import Profile
 from rest_framework import serializers
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -27,3 +28,16 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             password=validated_data['password'],
         )
+        return user
+    
+class ProfileSerializer(serializers.ModelSerializer):
+    profile_picture_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Profile
+        Fields = ['bio', 'profile_picture', 'profile_picture_url']
+
+    def get_profile_picture_url(self, obj):
+        if obj.profile_picture:
+            return self.context['request'].build_absolute_uri(obj.profile_picture.url)
+        return None
