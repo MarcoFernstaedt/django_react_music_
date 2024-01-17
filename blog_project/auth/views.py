@@ -9,6 +9,7 @@ class UserRegistrationView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+        
         return Response({
             "user": UserRegistrationSerializer(user, context=self.get_serializer_context()).data,
             "message": "User Created Successfully.  Now perform Email Verification process."
